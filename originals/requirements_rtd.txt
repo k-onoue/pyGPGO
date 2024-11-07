@@ -1,0 +1,6 @@
+numpy
+scipy
+joblib
+scikit-learn
+pymc3
+theano
