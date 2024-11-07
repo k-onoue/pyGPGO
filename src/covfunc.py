@@ -165,7 +165,7 @@ class matern:
         """
         r = l2norm_(X, Xstar)
         r = r + 1e-12  # Avoid zero distance
-        scaled_r = torch.sqrt(2 * self.v) * r / self.l
+        scaled_r = torch.sqrt(torch.tensor(2 * self.v)) * r / torch.tensor(self.l)
         # Compute the Matern kernel
         K = self.sigmaf * ((2 ** (1 - self.v)) / tspecial.gamma(self.v)) * (scaled_r ** self.v) * tspecial.kv(self.v, scaled_r)
         K[torch.isnan(K)] = self.sigmaf  # Replace NaNs resulting from zero distances
