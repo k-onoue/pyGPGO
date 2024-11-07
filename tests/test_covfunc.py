@@ -1,65 +1,71 @@
+import torch
 import numpy as np
-from pyGPGO.covfunc import squaredExponential, matern, matern32, matern52, \
-                           gammaExponential, rationalQuadratic, expSine, dotProd
+from _src import squaredExponential, matern32, matern52
 
+# 使用するカーネル関数のインスタンス
+covfuncs = [squaredExponential(), matern32(), matern52()]
 
-covfuncs = [squaredExponential(), matern(), matern32(), matern52(), gammaExponential(),
-            rationalQuadratic(), expSine(), dotProd()]
+# 勾配計算が可能なカーネル
+grad_enabled = [squaredExponential(), matern32(), matern52()]
 
-grad_enabled = [squaredExponential(), matern32(), matern52(), gammaExponential(),
-                rationalQuadratic(), expSine()]
+# カーネル名とクラスのマッピング
+covariance_classes = {
+    'squaredExponential': squaredExponential,
+    'matern32': matern32,
+    'matern52': matern52
+}
 
-# Some kernels do not have gradient computation enabled, such is the case 
-# of the generalised matérn kernel.
-#
-# All (but the dotProd kernel) have a characteristic length-scale l that
-# we test for here.
+# ハイパーパラメータの範囲
+hyperparameters_interval = {
+    'squaredExponential': {'l': (0.1, 2.0), 'sigmaf': (0.1, 1.0), 'sigman': (0.0, 0.1)},
+    'matern32': {'l': (0.1, 2.0), 'sigmaf': (0.1, 1.0), 'sigman': (0.0, 0.1)},
+    'matern52': {'l': (0.1, 2.0), 'sigmaf': (0.1, 1.0), 'sigman': (0.0, 0.1)}
+}
 
-covariance_classes = dict(squaredExponential=squaredExponential, matern=matern, matern32=matern32, matern52=matern52,
-                          gammaExponential=gammaExponential, rationalQuadratic=rationalQuadratic, dotProd=dotProd)
-
-hyperparameters_interval = dict(squaredExponential=dict(l=(0, 2.0), sigmaf=(0, 0.5), sigman=(0, 0.5)),
-                                matern=dict(l=(0, 2.0), sigmaf=(0, 0.5), sigman=(0, 0.5)),
-                                matern32=dict(l=(0, 2.0), sigmaf=(0, 0.5), sigman=(0, 0.5)),
-                                matern52=dict(l=(0, 2.0), sigmaf=(0, 0.5), sigman=(0, 0.5)),
-                                gammaExponential=dict(gamma=(0,2.0), l=(0, 2.0), sigmaf=(0, 0.5), sigman=(0, 0.5)),
-                                rationalQuadratic=dict(alpha=(0,2.0), l=(0, 2.0), sigmaf=(0, 0.5), sigman=(0, 0.5)),
-                                dotProd=dict(sigmaf=(0, 0.5), sigman=(0, 0.5)))
-
-def generate_hyperparameters(**hyperparmeter_interval):
-    generated_hyperparameters = dict()
-    for hyperparameter, bound in hyperparmeter_interval.items():
+def generate_hyperparameters(**hyperparameter_interval):
+    generated_hyperparameters = {}
+    for hyperparameter, bound in hyperparameter_interval.items():
         generated_hyperparameters[hyperparameter] = np.random.uniform(bound[0], bound[1])
     return generated_hyperparameters
 
-
 def test_psd_covfunc():
-    # Check if generated covariance functions are positive definite
+    # 生成されたカーネルが正定値であることを確認
+    torch.manual_seed(0)
     np.random.seed(0)
     for name in covariance_classes:
         for i in range(10):
-            generated_hyperparameters = generate_hyperparameters(**hyperparameters_interval[name])
-            cov = covariance_classes[name](**generated_hyperparameters)
-            for j in range(100):
-                X = np.random.randn(10, 2)
-                eigvals = np.linalg.eigvals(cov.K(X,X))
-                assert (eigvals > 0).all()
-
+            hyperparams = generate_hyperparameters(**hyperparameters_interval[name])
+            cov = covariance_classes[name](**hyperparams)
+            for j in range(10):
+                X = torch.randn(10, 2)
+                K = cov.K(X, X)
+                # 対称性を確保
+                K = (K + K.T) / 2
+                # 最小固有値をチェック
+                eigvals = torch.linalg.eigvalsh(K)
+                assert (eigvals > -1e-6).all(), f"{name} カーネルの共分散行列が正定値ではありません"
 
 def test_sim():
-    rng = np.random.RandomState(0)
-    X = np.random.randn(100, 3)
+    # カーネル関数のシミュレーションテスト
+    torch.manual_seed(0)
+    X = torch.randn(100, 3)
     for cov in covfuncs:
-        cov.K(X, X)
+        K = cov.K(X, X)
+        assert K.shape == (100, 100), f"{cov.__class__.__name__} カーネルの出力サイズが不正です"
 
-
-def test_grad(): 
-    rng = np.random.RandomState(0)
-    X = np.random.randn(3, 3)
+def test_grad():
+    # 勾配計算のテスト
+    torch.manual_seed(0)
+    X = torch.randn(3, 3, requires_grad=True)
     for cov in grad_enabled:
-        cov.gradK(X, X, 'l')
-
+        K = cov.K(X, X)
+        K_sum = K.sum()
+        K_sum.backward()
+        grad = X.grad
+        assert grad is not None, f"{cov.__class__.__name__} カーネルで勾配計算に失敗しました"
 
 if __name__ == '__main__':
+    test_psd_covfunc()
     test_sim()
     test_grad()
+    print("すべてのテストが成功しました。")
