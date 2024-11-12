@@ -1,3 +1,9 @@
+"""
+# ----- Future Work -----
+- Direct implementation of multi-tart optimization for hyperparameters on tStudentProcess class
+"""
+
+
 from typing import Dict
 
 import torch
