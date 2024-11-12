@@ -50,7 +50,7 @@ class tStudentProcess:
         params["df"] = self.df
         return params
 
-    def fit(self, X, y):
+    def fit(self, X, y, **kwargs):
         """
         Fits the t-Student Process model to the data.
 
@@ -66,7 +66,7 @@ class tStudentProcess:
         self.n_samples = X.shape[0]
 
         if self.optimize:
-            self._optimize_hyperparameters()
+            self._optimize_hyperparameters(**kwargs)
         else:
             self._compute_posterior()
 

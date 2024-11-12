@@ -44,7 +44,7 @@ class GaussianProcess:
         # params = {k: v.item() for k, v in params.items()}
         return params
 
-    def fit(self, X, y):
+    def fit(self, X, y, **kwargs):
         """
         Fits the Gaussian Process model to the data.
         """
@@ -54,7 +54,7 @@ class GaussianProcess:
         self.y = y.to(self.config.device.device, self.config.device.dtype)
         self.n_samples = X.shape[0]
         if self.optimize:
-            self._optimize_hyperparameters()
+            self._optimize_hyperparameters(**kwargs)
 
         # Compute posterior parameters
         self._compute_posterior()
