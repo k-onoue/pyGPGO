@@ -1,6 +1,6 @@
 """
 # ----- Future Work -----
-- Direct implementation of multi-tart optimization for hyperparameters on tStudentProcess class
+- Direct implementation of multi-tart optimization for hyperparameters on GaussianProcess class
 """
 
 
