@@ -17,6 +17,7 @@ def generate_noise(size, noise_type="normal", df=1):
 
 def add_noise(func):
     """Decorator to add noise to the output of a function based on noise settings in self."""
+
     def wrapper(self, X):
         result = func(self, X)
         # Add noise only if noise_coeff is non-zero
@@ -24,6 +25,7 @@ def add_noise(func):
             noise = generate_noise(result.shape, self.noise_type, self.df)
             result += self.noise_coeff * noise
         return result
+
     return wrapper
 
 
@@ -44,7 +46,7 @@ class TestFunction:
     @add_noise
     def __call__(self, X):
         raise NotImplementedError("Subclasses should implement this method.")
-    
+
 
 class SinusoidalSynthetic(TestFunction):
     r"""
@@ -164,7 +166,6 @@ class Hartmann6(TestFunction):
         val = -outer_sum.reshape(-1, 1)
 
         return val
-
 
 
 # if __name__ == "__main__":
