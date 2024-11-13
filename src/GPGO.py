@@ -6,6 +6,11 @@ from pyGPGO.logger import EventLogger
 from scipy.optimize import minimize
 
 
+
+class BayesianOptimizer:
+    def __init__(self, surrogate, acquisition, f, parameter_dict):
+
+
 class GPGO:
     def __init__(self, surrogate, acquisition, f, parameter_dict, n_jobs=1):
         """
