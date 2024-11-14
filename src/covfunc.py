@@ -8,6 +8,11 @@ from .config import ModelConfig
 
 
 def kronDelta(X, Xstar):
+    if X.dim() == 1:
+        X = X.unsqueeze(1)
+    if Xstar.dim() == 1:
+        Xstar = Xstar.unsqueeze(1)
+    
     return (X.unsqueeze(1) == Xstar.unsqueeze(0)).all(dim=2).float()
 
 
