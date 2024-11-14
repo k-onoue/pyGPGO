@@ -98,7 +98,7 @@ class GaussianProcess:
             
             print(f"Iter: {_}, Log Marginal Likelihood: {self.logp.item()}")
 
-    def predict(self, Xstar, return_std=False):
+    def predict(self, Xstar, var_min=1e-12, return_std=False):
         """
         Makes predictions using the Gaussian Process model.
 
@@ -106,6 +106,7 @@ class GaussianProcess:
         ----------
         Xstar : torch.Tensor, shape=(n_test_samples, n_features)
             Test inputs.
+        var_min : float, default=1e-12
         return_std : bool
             If True, returns the standard deviation of the predictions.
 
@@ -122,6 +123,7 @@ class GaussianProcess:
         v = torch.cholesky_solve(k_star, self.L)
         K_star = self.covfunc.K(Xstar, Xstar)
         fcov = K_star - torch.matmul(k_star.t(), v)
+        fcov = fcov.clamp_min(var_min)
 
         if return_std:
             fcov = torch.sqrt(torch.diag(fcov))

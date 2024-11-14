@@ -127,7 +127,7 @@ class tStudentProcess:
 
             print(f"Iter: {step}, Log Marginal Likelihood: {self.logp.item()}")
 
-    def predict(self, Xstar, return_std=False):
+    def predict(self, Xstar, var_min=1e-12, return_std=False):
         """
         Makes predictions using the t-Student Process model.
 
@@ -135,6 +135,7 @@ class tStudentProcess:
         ----------
         Xstar : torch.Tensor, shape=(n_test_samples, n_features)
             Test inputs.
+        var_min : float, default=1e-12
         return_std : bool
             If True, returns the standard deviation of the predictions.
 
@@ -151,11 +152,12 @@ class tStudentProcess:
         v = torch.cholesky_solve(K_s, self.L)
         K_ss = self.covfunc.K(Xstar, Xstar)
         fcov = ((self.df + self.alpha @ self.y - 2) / (self.df + self.n_samples - 2)) * (K_ss - K_s.t() @ v)
+        fcov = fcov.clamp_min(var_min)
 
         if return_std:
-            return fmean, torch.sqrt(torch.diag(fcov))
-        else:
-            return fmean, fcov
+            fcov = torch.sqrt(torch.diag(fcov))
+
+        return fmean, fcov
 
     def update(self, x_new, y_new):
         """
