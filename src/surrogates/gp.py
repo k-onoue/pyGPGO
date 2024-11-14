@@ -64,15 +64,18 @@ class GaussianProcess:
         Computes the posterior distribution of the Gaussian Process.
         """
         K = self.covfunc.K(self.X, self.X)
+
+        if self.y.dim() == 1:
+            self.y = self.y.unsqueeze(1)
+
         self.L = torch.linalg.cholesky(K)
-        self.alpha = torch.cholesky_solve((self.y - self.mprior).unsqueeze(1), self.L)
-        self.alpha = self.alpha.squeeze()
+        self.alpha = torch.cholesky_solve(self.y - self.mprior, self.L)
 
         # Compute log marginal likelihood
         y_centered = self.y - self.mprior
-        self.logp = -0.5 * torch.dot(y_centered, self.alpha)
-        self.logp -= torch.sum(torch.log(torch.diag(self.L)))
-        self.logp -= self.n_samples / 2 * torch.log(torch.tensor(2 * torch.pi))
+        self.logp = -0.5 * torch.matmul(y_centered.t(), self.alpha).item()
+        self.logp -= torch.sum(torch.log(torch.diag(self.L))).item()
+        self.logp -= self.n_samples / 2 * torch.log(torch.tensor(2 * torch.pi)).item()
 
     def _optimize_hyperparameters(self, n_steps=1000, lr=0.01):
         """
