@@ -8,6 +8,7 @@ from typing import Dict
 
 import torch
 import torch.optim as optim
+from linear_operator.utils.cholesky import psd_safe_cholesky
 
 from ..covfunc import CovarianceFunction
 
@@ -68,7 +69,7 @@ class GaussianProcess:
         if self.y.dim() == 1:
             self.y = self.y.unsqueeze(1)
 
-        self.L = torch.linalg.cholesky(K)
+        self.L = psd_safe_cholesky(K)
         self.alpha = torch.cholesky_solve(self.y - self.mprior, self.L)
 
         # Compute log marginal likelihood

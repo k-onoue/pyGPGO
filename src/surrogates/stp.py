@@ -6,6 +6,7 @@
 from typing import Dict
 import torch
 import torch.optim as optim
+from linear_operator.utils.cholesky import psd_safe_cholesky
 
 from ..covfunc import CovarianceFunction
 
@@ -76,7 +77,7 @@ class tStudentProcess:
         """
         K = self.covfunc.K(self.X, self.X)
         K += torch.eye(self.n_samples, device=self.X.device) * self.covfunc.noise ** 2  # Add noise term
-        self.L = torch.linalg.cholesky(K)
+        self.L = psd_safe_cholesky(K)
         
         y = self.y if self.y.dim() > 1 else self.y.unsqueeze(1)
         self.alpha = torch.cholesky_solve((y - self.mprior), self.L).squeeze()
