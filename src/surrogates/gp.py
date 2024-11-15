@@ -100,7 +100,7 @@ class GaussianProcess:
             loss.backward()
             optimizer.step()
             
-            print(f"Iter: {_}, Log Marginal Likelihood: {self.logp.item()}")
+            # print(f"Iter: {_}, Log Marginal Likelihood: {self.logp.item()}")
 
     def predict(self, Xstar, var_min=1e-12, return_std=False):
         """

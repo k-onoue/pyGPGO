@@ -1,0 +1,320 @@
+/Users/keisukeonoue/ws/pyGPGO/src/covfunc.py:133: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(config.priors.noise_prior.mean, device=config.device.device, dtype=config.device.dtype)
+/Users/keisukeonoue/ws/pyGPGO/tests/bo.py:13: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  bounds = torch.tensor(search_space, dtype=torch.float32)
+/Users/keisukeonoue/ws/pyGPGO/src/covfunc.py:133: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  torch.tensor(config.priors.noise_prior.mean, device=config.device.device, dtype=config.device.dtype)
+/Users/keisukeonoue/ws/pyGPGO/tests/bo.py:13: UserWarning: To copy construct from a tensor, it is recommended to use sourceTensor.clone().detach() or sourceTensor.clone().detach().requires_grad_(True), rather than torch.tensor(sourceTensor).
+  bounds = torch.tensor(search_space, dtype=torch.float32)
+lb: tensor([5]), ub: tensor([10])
+is_maximize: False
+initial_X: 
+tensor([ 5.0000, 10.0000,  7.5000])
+initial_y: 
+tensor([[15.3824],
+        [-6.8019],
+        [34.7574]])
+y_max 34.757415771484375, y_min -6.801930904388428
+best_f -6.801930904388428, maximize False
+Acquisition is_maximize?: False
+Iteration 1: Best point: tensor([9.8871]), Best value: 0.18003913760185242
+
+y_max 34.757415771484375, y_min -6.801930904388428
+best_f -6.801930904388428, maximize False
+Acquisition is_maximize?: False
+Iteration 2: Best point: tensor([6.0254]), Best value: 0.14472481608390808
+
+y_max 34.757415771484375, y_min -21.988283157348633
+best_f -21.988283157348633, maximize False
+Acquisition is_maximize?: False
+Iteration 3: Best point: tensor([6.0275]), Best value: 2.8227771053934703e-06
+
+y_max 34.757415771484375, y_min -22.07919692993164
+best_f -22.07919692993164, maximize False
+Acquisition is_maximize?: False
+Iteration 4: Best point: tensor([6.0299]), Best value: 4.902254204353085e-06
+
+y_max 34.757415771484375, y_min -22.18634796142578
+best_f -22.18634796142578, maximize False
+Acquisition is_maximize?: False
+Iteration 5: Best point: tensor([6.0229]), Best value: 8.013739716261625e-06
+
+y_max 34.757415771484375, y_min -22.18634796142578
+best_f -22.18634796142578, maximize False
+Acquisition is_maximize?: False
+Iteration 6: Best point: tensor([6.0292]), Best value: 1.3827734619553667e-05
+
+y_max 34.757415771484375, y_min -22.18634796142578
+best_f -22.18634796142578, maximize False
+Acquisition is_maximize?: False
+Iteration 7: Best point: tensor([6.0313]), Best value: 2.3068072550813667e-05
+
+y_max 34.757415771484375, y_min -22.24637794494629
+best_f -22.24637794494629, maximize False
+Acquisition is_maximize?: False
+Iteration 8: Best point: tensor([6.0300]), Best value: 3.513926640152931e-05
+
+y_max 34.757415771484375, y_min -22.24637794494629
+best_f -22.24637794494629, maximize False
+Acquisition is_maximize?: False
+Iteration 9: Best point: tensor([6.0317]), Best value: 5.470399628393352e-05
+
+y_max 34.757415771484375, y_min -22.262859344482422
+best_f -22.262859344482422, maximize False
+Acquisition is_maximize?: False
+Iteration 10: Best point: tensor([6.0319]), Best value: 8.152030204655603e-05
+
+y_max 34.757415771484375, y_min -22.2717227935791
+best_f -22.2717227935791, maximize False
+Acquisition is_maximize?: False
+Iteration 11: Best point: tensor([6.0313]), Best value: 0.00011902175901923329
+
+y_max 34.757415771484375, y_min -22.2717227935791
+best_f -22.2717227935791, maximize False
+Acquisition is_maximize?: False
+Iteration 12: Best point: tensor([6.0328]), Best value: 0.0001706819311948493
+
+y_max 34.757415771484375, y_min -22.310091018676758
+best_f -22.310091018676758, maximize False
+Acquisition is_maximize?: False
+Iteration 13: Best point: tensor([6.0316]), Best value: 0.00023182974837254733
+
+y_max 34.757415771484375, y_min -22.310091018676758
+best_f -22.310091018676758, maximize False
+Acquisition is_maximize?: False
+Iteration 14: Best point: tensor([6.0326]), Best value: 0.0003183269000146538
+
+y_max 34.757415771484375, y_min -22.310091018676758
+best_f -22.310091018676758, maximize False
+Acquisition is_maximize?: False
+Iteration 15: Best point: tensor([6.0360]), Best value: 0.0004290201177354902
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 16: Best point: tensor([6.0343]), Best value: 0.0005087266908958554
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 17: Best point: tensor([6.0354]), Best value: 0.0006646746769547462
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 18: Best point: tensor([6.0286]), Best value: 0.0008559353300370276
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 19: Best point: tensor([6.0313]), Best value: 0.0010819723829627037
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 20: Best point: tensor([6.0334]), Best value: 0.001352782710455358
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 21: Best point: tensor([6.0342]), Best value: 0.0016736453399062157
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 22: Best point: tensor([6.0349]), Best value: 0.0020487613510340452
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 23: Best point: tensor([6.0345]), Best value: 0.0024833816569298506
+
+y_max 34.757415771484375, y_min -22.45020866394043
+best_f -22.45020866394043, maximize False
+Acquisition is_maximize?: False
+Iteration 24: Best point: tensor([6.0382]), Best value: 0.0029801297932863235
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 25: Best point: tensor([6.0336]), Best value: 0.0033247743267565966
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 26: Best point: tensor([6.0344]), Best value: 0.003923357464373112
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 27: Best point: tensor([6.0344]), Best value: 0.004595589358359575
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 28: Best point: tensor([6.0343]), Best value: 0.0053438893519341946
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 29: Best point: tensor([6.0347]), Best value: 0.006171585991978645
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 30: Best point: tensor([6.0348]), Best value: 0.007083214819431305
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 31: Best point: tensor([6.0351]), Best value: 0.008081309497356415
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 32: Best point: tensor([6.0350]), Best value: 0.0091693215072155
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 33: Best point: tensor([6.0346]), Best value: 0.010347817093133926
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 34: Best point: tensor([6.0335]), Best value: 0.011617324315011501
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 35: Best point: tensor([6.0336]), Best value: 0.012975775636732578
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 36: Best point: tensor([6.0351]), Best value: 0.014429936185479164
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 37: Best point: tensor([6.0353]), Best value: 0.015989845618605614
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 38: Best point: tensor([6.0342]), Best value: 0.01764909364283085
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 39: Best point: tensor([6.0347]), Best value: 0.019399605691432953
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 40: Best point: tensor([6.0344]), Best value: 0.021251896396279335
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 41: Best point: tensor([6.0354]), Best value: 0.02320106141269207
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 42: Best point: tensor([6.0351]), Best value: 0.025257384404540062
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 43: Best point: tensor([6.0356]), Best value: 0.02740977518260479
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 44: Best point: tensor([6.0368]), Best value: 0.029664449393749237
+
+y_max 34.757415771484375, y_min -22.543415069580078
+best_f -22.543415069580078, maximize False
+Acquisition is_maximize?: False
+Iteration 45: Best point: tensor([6.0384]), Best value: 0.03202851489186287
+
+y_max 34.757415771484375, y_min -22.549257278442383
+best_f -22.549257278442383, maximize False
+Acquisition is_maximize?: False
+Iteration 46: Best point: tensor([6.0360]), Best value: 0.03439537435770035
+
+y_max 34.757415771484375, y_min -22.549257278442383
+best_f -22.549257278442383, maximize False
+Acquisition is_maximize?: False
+Iteration 47: Best point: tensor([6.0356]), Best value: 0.0369393527507782
+
+y_max 34.757415771484375, y_min -22.549257278442383
+best_f -22.549257278442383, maximize False
+Acquisition is_maximize?: False
+Iteration 48: Best point: tensor([6.0351]), Best value: 0.039572421461343765
+
+y_max 34.757415771484375, y_min -22.549257278442383
+best_f -22.549257278442383, maximize False
+Acquisition is_maximize?: False
+Iteration 49: Best point: tensor([6.0353]), Best value: 0.04229174181818962
+
+y_max 34.757415771484375, y_min -22.549257278442383
+best_f -22.549257278442383, maximize False
+Acquisition is_maximize?: False
+Iteration 50: Best point: tensor([6.0390]), Best value: 0.045100368559360504
+
+tensor([[ 15.3824],
+        [ -6.8019],
+        [ 34.7574],
+        [ 19.4601],
+        [-21.9883],
+        [-22.0792],
+        [-22.1863],
+        [-21.8749],
+        [-22.1530],
+        [-22.2464],
+        [-22.1912],
+        [-22.2629],
+        [-22.2717],
+        [-22.2476],
+        [-22.3101],
+        [-22.2580],
+        [-22.3009],
+        [-22.4502],
+        [-22.3752],
+        [-22.4238],
+        [-22.1267],
+        [-22.2452],
+        [-22.3360],
+        [-22.3696],
+        [-22.4021],
+        [-22.3823],
+        [-22.5434],
+        [-22.3471],
+        [-22.3783],
+        [-22.3791],
+        [-22.3774],
+        [-22.3916],
+        [-22.3991],
+        [-22.4107],
+        [-22.4037],
+        [-22.3871],
+        [-22.3420],
+        [-22.3456],
+        [-22.4115],
+        [-22.4183],
+        [-22.3713],
+        [-22.3917],
+        [-22.3809],
+        [-22.4239],
+        [-22.4112],
+        [-22.4316],
+        [-22.4832],
+        [-22.5493],
+        [-22.4485],
+        [-22.4305],
+        [-22.4105],
+        [-22.4193],
+        [-22.5765]])
+Optimal point: 6.039016246795654, Optimal value: tensor([-22.5765])

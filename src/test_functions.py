@@ -62,11 +62,6 @@ class SinusoidalSynthetic(TestFunction):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.search_space = torch.tensor([[5], [10]])
-        self.maximize = False
-        self.max_x = 9.03835
-        self.max_f = 64.4207
-        self.min_x = 10
-        self.min_f = -80.9928606687
 
     @add_noise
     def __call__(self, x: torch.Tensor) -> torch.Tensor:
@@ -92,7 +87,6 @@ class BraninHoo(TestFunction):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.search_space = torch.tensor([[0, -5], [15, 15]])
-        self.maximize = False
         self.min_f = 0.397887
 
     @add_noise
@@ -126,7 +120,6 @@ class Hartmann6(TestFunction):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.search_space = torch.tensor([[0] * 6, [1] * 6])
-        self.maximize = False
         self.min_f = -3.32237
 
     @add_noise
